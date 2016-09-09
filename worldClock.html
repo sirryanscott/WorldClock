@@ -6,18 +6,13 @@
 			var timerRunning = false;
 			var timezone = "Greenwich Mean Time"; // what time zone are you in ?
 			var adjust = 0;
-			function TEST(id){
-				debugger;
-				document.getElementById(id).innerHTML = "HELLO " + id;
-			}
+			
 			function timeCheck(diff, id) {
-			debugger;
 				if (timerRunning) {
 					clearTimeout(updatetime);
 					timerRunning = false;
 				}
 				gmtOffset = eval(diff + adjust);
-				//timezone = tzone;
 				checkDateTime(id);
 			}
 			function checkDateTime(id) {
@@ -108,128 +103,84 @@
 				dateTime += (hour >= 12) ? " PM, " : " AM, ";
 				dateTime += month + " " + date + ", " + year;
 				document.getElementById(id).innerHTML = dateTime;
-				document.clock.zonename.value = timezone;
+				
 				updatetime = setTimeout("checkDateTime(id)", 900);
 				timerRunning = true;
+			}
+			function updateClocks(){
+				timeCheck(420,"utah");
+				timeCheck(-60,"spain");
+				timeCheck(-480,"japan");
+				timeCheck(300,"soCarolina");
+				timeCheck(420,"ephraim");
+				timeCheck(480,"cancun");
 			}
 			// End -->
 		</SCRIPT>
 
 	</head>
 	<body>
-		<!-- STEP TWO: Insert the onLoad event handler into your BODY tag  -->
-
-		<BODY OnLoad="timeCheck(timezone, 0)">
-			<center>
-				<h2>World Clock</h2>
-				<!--<form name=clock>
-					<input type=text name=zonetime size=31>
-						<br>
+		<center>
+			<h2>World Clock</h2>
+			<table border=1 cellpadding=10>
+				<tr>
+					<td align=center>
+						<div>
+							Utah
 							<br>
-								<b>Current Time Zone</b>
-								<br>
-									<input type=text name=zonename size=21>
-										<br>
-											<br>
-												<table border=1 cellpadding=5>
-													<tr>
-														<td align=center>
-															<input type=button value="Pacific" onClick="timeCheck(this.value, +480)">
-														</td>
-														<td align=center>
-															<input type=button value="Central" onClick="timeCheck(this.value, +420)">
-														</td>
-														<td align=center>
-															<input type=button value="Eastern" onClick="timeCheck(this.value, +300)">
-														</td>
-													</tr>
-													<tr>
-														<td align=center>
-															<input type=button value="Hawaii" onClick="timeCheck(this.value, +600)">
-														</td>
-														<td align=center>
-															<input type=button value="Mexico" onClick="timeCheck(this.value, +360)">
-														</td>
-														<td align=center>
-															<input type=button value="New Delhi" onClick="timeCheck(this.value, -330)">
-														</td>
-													</tr>
-													<tr>
-														<td align=center>
-															<input type=button value="Hong Kong" onClick="timeCheck(this.value, -480)">
-														</td>
-														<td align=center>
-															<input type=button value="Tokyo" onClick="timeCheck(this.value, -540)">
-														</td>
-														<td align=center>
-															<input type=button value="London" onClick="timeCheck(this.value, +0)">
-														</td>
-													</tr>
-												</table>-->
-	
-												<table cellpadding=10>
-													<tr>
-														<td align=center>
-															<div>
-																Utah
-																<br>
-																<div id="utah">
-																	<script>timeCheck(420,"utah");</script>
-																</div>
-															</div>
-														</td>
-														<td align=center>
-															<div>
-																Spain
-																<br>
-																<div id="spain">
-																	<script>timeCheck(-60,"spain");</script>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td align=center>
-															<div>
-																Japan
-																<br>
-																<div id="japan">
-																	<script>timeCheck(-480,"japan");</script>
-																</div>
-															</div>
-														</td>
-														<td align=center>
-															<div>
-																So. Carolina
-																<br>
-																<div id="soCarolina">
-																	<script>timeCheck(300,"soCarolina");</script>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td align=center>
-															<div>
-																Ephraim
-																<br>
-																<div id="ephraim">
-																	<script>timeCheck(420,"ephraim");</script>
-																</div>
-															</div>
-														</td>
-														<td align=center>
-															<div>
-																Canc&uacute;n
-																<br>
-																<div id="cancun">
-																	<script>timeCheck(480,"cancun");</script>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</table>
-				</form>
-			</center>
+							<div id="utah">
+							</div>
+						</div>
+					</td>
+					<td align=center>
+						<div>
+							Spain
+							<br>
+							<div id="spain">
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align=center>
+						<div>
+							Japan
+							<br>
+							<div id="japan">
+							</div>
+						</div>
+					</td>
+					<td align=center>
+						<div>
+							So. Carolina
+							<br>
+							<div id="soCarolina">
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align=center>
+						<div>
+							Ephraim
+							<br>
+							<div id="ephraim">
+							</div>
+						</div>
+					</td>
+					<td align=center>
+						<div>
+							Canc&uacute;n
+							<br>
+							<div id="cancun">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</center>
+		<script>
+			setInterval(updateClocks, 1000);
+		</script>
 	</body>
 </html>
