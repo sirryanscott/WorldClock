@@ -6,16 +6,21 @@
 			var timerRunning = false;
 			var timezone = "Greenwich Mean Time"; // what time zone are you in ?
 			var adjust = 0;
-			function timeCheck(tzone, diff) {
+			function TEST(id){
+				debugger;
+				document.getElementById(id).innerHTML = "HELLO " + id;
+			}
+			function timeCheck(diff, id) {
+			debugger;
 				if (timerRunning) {
 					clearTimeout(updatetime);
 					timerRunning = false;
 				}
 				gmtOffset = eval(diff + adjust);
-				timezone = tzone;
-				checkDateTime();
+				//timezone = tzone;
+				checkDateTime(id);
 			}
-			function checkDateTime() {
+			function checkDateTime(id) {
 				var today = new Date();
 				var year = today.getYear() + 1900;
 				var month = today.getMonth() + 1;
@@ -102,9 +107,9 @@
 				dateTime += ((second < 10) ? ":0" : ":") + second;
 				dateTime += (hour >= 12) ? " PM, " : " AM, ";
 				dateTime += month + " " + date + ", " + year;
-				document.clock.zonetime.value = dateTime;
+				document.getElementById(id).innerHTML = dateTime;
 				document.clock.zonename.value = timezone;
-				updatetime = setTimeout("checkDateTime()", 900);
+				updatetime = setTimeout("checkDateTime(id)", 900);
 				timerRunning = true;
 			}
 			// End -->
@@ -117,8 +122,7 @@
 		<BODY OnLoad="timeCheck(timezone, 0)">
 			<center>
 				<h2>World Clock</h2>
-					<br><b>Current Time</b>
-				<form name=clock>
+				<!--<form name=clock>
 					<input type=text name=zonetime size=31>
 						<br>
 							<br>
@@ -131,37 +135,100 @@
 													<tr>
 														<td align=center>
 															<input type=button value="Pacific" onClick="timeCheck(this.value, +480)">
-															</td>
-															<td align=center>
-																<input type=button value="Central" onClick="timeCheck(this.value, +420)">
-																</td>
-																<td align=center>
-																	<input type=button value="Eastern" onClick="timeCheck(this.value, +300)">
-																	</td>
-																</tr>
-																<tr>
-																	<td align=center>
-																		<input type=button value="Hawaii" onClick="timeCheck(this.value, +600)">
-																		</td>
-																		<td align=center>
-																			<input type=button value="Mexico" onClick="timeCheck(this.value, +360)">
-																			</td>
-																			<td align=center>
-																				<input type=button value="New Delhi" onClick="timeCheck(this.value, -330)">
-																				</td>
-																			</tr>
-																			<tr>
-																				<td align=center>
-																					<input type=button value="Hong Kong" onClick="timeCheck(this.value, -480)">
-																					</td>
-																					<td align=center>
-																						<input type=button value="Tokyo" onClick="timeCheck(this.value, -540)">
-																						</td>
-																						<td align=center>
-																							<input type=button value="London" onClick="timeCheck(this.value, +0)">
-																							</td>
-																						</tr>
-					</table>
+														</td>
+														<td align=center>
+															<input type=button value="Central" onClick="timeCheck(this.value, +420)">
+														</td>
+														<td align=center>
+															<input type=button value="Eastern" onClick="timeCheck(this.value, +300)">
+														</td>
+													</tr>
+													<tr>
+														<td align=center>
+															<input type=button value="Hawaii" onClick="timeCheck(this.value, +600)">
+														</td>
+														<td align=center>
+															<input type=button value="Mexico" onClick="timeCheck(this.value, +360)">
+														</td>
+														<td align=center>
+															<input type=button value="New Delhi" onClick="timeCheck(this.value, -330)">
+														</td>
+													</tr>
+													<tr>
+														<td align=center>
+															<input type=button value="Hong Kong" onClick="timeCheck(this.value, -480)">
+														</td>
+														<td align=center>
+															<input type=button value="Tokyo" onClick="timeCheck(this.value, -540)">
+														</td>
+														<td align=center>
+															<input type=button value="London" onClick="timeCheck(this.value, +0)">
+														</td>
+													</tr>
+												</table>-->
+	
+												<table cellpadding=10>
+													<tr>
+														<td align=center>
+															<div>
+																Utah
+																<br>
+																<div id="utah">
+																	<script>timeCheck(420,"utah");</script>
+																</div>
+															</div>
+														</td>
+														<td align=center>
+															<div>
+																Spain
+																<br>
+																<div id="spain">
+																	<script>timeCheck(-60,"spain");</script>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td align=center>
+															<div>
+																Japan
+																<br>
+																<div id="japan">
+																	<script>timeCheck(-480,"japan");</script>
+																</div>
+															</div>
+														</td>
+														<td align=center>
+															<div>
+																So. Carolina
+																<br>
+																<div id="soCarolina">
+																	<script>timeCheck(300,"soCarolina");</script>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td align=center>
+															<div>
+																Ephraim
+																<br>
+																<div id="ephraim">
+																	<script>timeCheck(420,"ephraim");</script>
+																</div>
+															</div>
+														</td>
+														<td align=center>
+															<div>
+																Canc&uacute;n
+																<br>
+																<div id="cancun">
+																	<script>timeCheck(480,"cancun");</script>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</table>
 				</form>
 			</center>
 	</body>
