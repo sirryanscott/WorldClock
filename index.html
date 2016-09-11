@@ -63,8 +63,9 @@
 					minute -= 60, hour++;
 				if (minute < 0)
 					minute += 60, hour--;
-				if (hour > 23)
+				if (hour > 23){
 					hour -= 24, date += 1;
+				}
 				if (((month == 4) || (month == 6) ||
 						(month == 9) || (month == 11)) && (date == 31))
 					date = 1, month++;
@@ -95,7 +96,11 @@
 						break;
 					}
 				}
-				var dateTime = hour;
+				var hourStandard = hour;
+				if(hourStandard > 12){
+					hourStandard -= 12;
+				}
+				var dateTime = hourStandard;
 				dateTime = ((dateTime < 10) ? "0" : "") + dateTime;
 				dateTime = "   " + dateTime;
 				dateTime += ((minute < 10) ? ":0" : ":") + minute;
