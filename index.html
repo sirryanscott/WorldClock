@@ -101,7 +101,7 @@
 					hourStandard -= 12;
 				}
 				var dateTime = hourStandard;
-				dateTime = ((dateTime < 10) ? "0" : "") + dateTime;
+				dateTime = ((dateTime < 10) ? "" : "") + dateTime;
 				dateTime = "   " + dateTime;
 				dateTime += ((minute < 10) ? ":0" : ":") + minute;
 				dateTime += ((second < 10) ? ":0" : ":") + second;
