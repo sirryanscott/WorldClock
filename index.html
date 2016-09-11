@@ -100,6 +100,9 @@
 				if(hourStandard > 12){
 					hourStandard -= 12;
 				}
+				if(hourStandard == 0){
+					hourStandard = 12;
+				}
 				var dateTime = hourStandard;
 				dateTime = ((dateTime < 10) ? "" : "") + dateTime;
 				dateTime = "   " + dateTime;
